@@ -9,6 +9,34 @@ This project consists of two main components:
 1. **Backend Agent** (`agent-finance-personal/`): A Python-based AI agent that handles financial analysis and recommendations
 2. **Frontend Application** (`app-finance-personal/`): A modern React-based web interface for interacting with the financial agent
 
+## Contributors
+
+### Core Team
+
+- [Joseph Esteban](https://github.com/jesteban19) - Lead Developer & Project Architect
+- [Snayder Esteban](https://github.com/snayderesteban) - Frontend Developer & UI/UX Designer
+
+### How to Contribute
+
+We welcome contributions from the community! Here's how you can help:
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+### Code of Conduct
+
+Please read our [Code of Conduct](CODE_OF_CONDUCT.md) before contributing.
+
+### Pull Request Process
+
+1. Update the README.md with details of changes if needed
+2. Update the documentation
+3. The PR will be reviewed by at least one core team member
+4. Once approved, it will be merged into the main branch
+
 ### System Architecture
 
 ```mermaid

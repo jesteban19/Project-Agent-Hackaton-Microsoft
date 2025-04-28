@@ -3,4 +3,5 @@
   <component name="Black">
     <option name="sdkName" value="Poetry (agent-finance-personal)" />
   </component>
+  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.13 (agent-finance-personal)" project-jdk-type="Python SDK" />
 </project>

@@ -43,10 +43,11 @@ Please read our [Code of Conduct](CODE_OF_CONDUCT.md) before contributing.
 graph TD
     A[Frontend React App] -->|HTTP/WebSocket| B[Backend Agent]
     B -->|AI Processing| C[Semantic Kernel]
-    B -->|Data Storage| D[Database]
+    B -->|Data Storage| D[Supabase]
     C -->|Financial Analysis| E[Financial Tools]
     E -->|Results| B
     B -->|Response| A
+    A -->|Direct Access| D[Supabase]
 ```
 
 ### Data Flow
@@ -58,6 +59,7 @@ sequenceDiagram
     participant Backend
     participant AI
     participant Tools
+    participant Supabase
 
     User->>Frontend: Interact with UI
     Frontend->>Backend: Send Request
@@ -65,8 +67,12 @@ sequenceDiagram
     AI->>Tools: Execute Financial Analysis
     Tools-->>AI: Return Results
     AI-->>Backend: Process Results
+    Backend->>Supabase: Store/Retrieve Data
+    Supabase-->>Backend: Return Data
     Backend-->>Frontend: Send Response
     Frontend-->>User: Display Results
+    Frontend->>Supabase: Direct Data Access
+    Supabase-->>Frontend: Return Data
 ```
 
 ## Backend Features

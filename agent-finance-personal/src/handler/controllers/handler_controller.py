@@ -24,7 +24,7 @@ def create_handler_bp(agent):
     async def get_transactions():
         try:
             supabase: Client = create_client(os.environ.get("SUPABASE_URL"), os.environ.get("SUPABASE_KEY"))
-            response = (supabase.table("transactions").select('*').execute())
+            response = (supabase.table("transactions").select('*').order("date",desc=True).execute())
             return jsonify(response.data)
         except Exception as e:
             return jsonify({'error': str(e)}), 400

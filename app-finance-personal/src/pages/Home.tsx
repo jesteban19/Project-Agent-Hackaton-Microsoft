@@ -166,44 +166,89 @@ const Home = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 p-4 flex flex-col">
+    <div className="min-h-[calc(100vh-100px)] bg-gray-50 p-4 flex flex-col">
       <div className="max-w-md mx-auto w-full flex-1 flex flex-col">
         <div className="text-center mb-8">
           <h1 className="text-2xl font-bold text-gray-800 mb-2">
-            Finance Assistant
+            Asistente Financiero
           </h1>
           <p className="text-gray-600">
-            Speak your transaction or ask for financial advice
+            Habla tu transacción o pide consejos financieros
           </p>
         </div>
 
         <div className="flex-1 flex flex-col space-y-4 overflow-y-auto pb-24">
-          {chatHistory.map((message, index) => (
-            <div
-              key={index}
-              className={`flex ${
-                message.type === "user" ? "justify-end" : "justify-start"
-              }`}
-            >
-              <div
-                className={`p-4 rounded-2xl max-w-[80%] shadow-md ${
-                  message.type === "user"
-                    ? "bg-primary-500 text-white"
-                    : "bg-white text-gray-800"
-                }`}
-              >
-                {message.type === "agent" ? (
-                  <div className="prose prose-sm max-w-none">
-                    <ReactMarkdown remarkPlugins={[remarkGfm, remarkEmoji]}>
-                      {message.content}
-                    </ReactMarkdown>
-                  </div>
-                ) : (
-                  <p>{message.content}</p>
-                )}
+          {chatHistory.length === 0 ? (
+            <div className="flex-1 flex flex-col items-center justify-center text-center px-4">
+              <div className="bg-white p-8 rounded-3xl shadow-lg max-w-sm w-full">
+                <div className="mb-6">
+                  <svg
+                    className="w-24 h-24 mx-auto text-primary-500"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={1.5}
+                      d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                </div>
+                <h2 className="text-xl font-semibold text-gray-800 mb-2">
+                  ¡Bienvenido a tu Asistente Financiero!
+                </h2>
+                <p className="text-gray-600 mb-6">
+                  Presiona el botón del micrófono y comienza a hablar para:
+                </p>
+                <ul className="text-left text-gray-600 space-y-2 mb-6">
+                  <li className="flex items-center">
+                    <span className="w-2 h-2 bg-primary-500 rounded-full mr-2"></span>
+                    Registrar ingresos y gastos
+                  </li>
+                  <li className="flex items-center">
+                    <span className="w-2 h-2 bg-primary-500 rounded-full mr-2"></span>
+                    Consultar tu balance
+                  </li>
+                  <li className="flex items-center">
+                    <span className="w-2 h-2 bg-primary-500 rounded-full mr-2"></span>
+                    Obtener consejos financieros
+                  </li>
+                </ul>
+                <div className="text-sm text-gray-500">
+                  Tu información se procesará automáticamente
+                </div>
               </div>
             </div>
-          ))}
+          ) : (
+            chatHistory.map((message, index) => (
+              <div
+                key={index}
+                className={`flex ${
+                  message.type === "user" ? "justify-end" : "justify-start"
+                }`}
+              >
+                <div
+                  className={`p-4 rounded-2xl max-w-[80%] shadow-md ${
+                    message.type === "user"
+                      ? "bg-primary-500 text-white"
+                      : "bg-white text-gray-800"
+                  }`}
+                >
+                  {message.type === "agent" ? (
+                    <div className="prose prose-sm max-w-none">
+                      <ReactMarkdown remarkPlugins={[remarkGfm, remarkEmoji]}>
+                        {message.content}
+                      </ReactMarkdown>
+                    </div>
+                  ) : (
+                    <p>{message.content}</p>
+                  )}
+                </div>
+              </div>
+            ))
+          )}
 
           {error && (
             <div className="w-full bg-red-50 p-4 rounded-2xl shadow-md">

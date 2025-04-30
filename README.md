@@ -186,9 +186,12 @@ graph TD
    ```
 
 3. Start the development server:
+
    ```bash
    npm run dev
    ```
+
+4. Access the application at `http://localhost:5173`
 
 ## Running the Application
 
@@ -205,6 +208,12 @@ graph TD
    ```
 
 3. Access the application at `http://localhost:5173`
+
+## Demo
+
+Check out our demo video to see the application in action:
+
+[![Personal Finance Agent Demo](https://img.youtube.com/vi/NMx8J_y-0UY/0.jpg)](https://www.youtube.com/shorts/NMx8J_y-0UY)
 
 ## Development
 

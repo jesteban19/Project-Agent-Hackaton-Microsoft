@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   MicrophoneIcon,
@@ -9,16 +8,15 @@ import {
 const SplashScreen = () => {
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      navigate("/home");
-    }, 3000);
-
-    return () => clearTimeout(timer);
-  }, [navigate]);
+  const handleContinue = () => {
+    navigate("/home");
+  };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-primary-50 to-primary-100 flex flex-col items-center justify-center p-6">
+    <div
+      className="min-h-screen bg-gradient-to-b from-primary-50 to-primary-100 flex flex-col items-center justify-center p-6"
+      onClick={handleContinue}
+    >
       <div className="text-center mb-12">
         <h1 className="text-4xl font-bold text-primary-600 mb-4">
           Finance Assistant

@@ -77,35 +77,86 @@ const TransactionHistory = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 p-4">
+    <div className="min-h-[calc(100vh+170px)] bg-gray-50 p-4">
       <div className="max-w-md mx-auto">
         <h1 className="text-2xl font-bold text-gray-800 mb-6">
           Historial de Transacciones
         </h1>
 
         {/* Summary Cards */}
-        <div className="grid grid-cols-3 gap-4 mb-6">
-          <div className="bg-white p-4 rounded-lg shadow-sm">
-            <p className="text-sm text-gray-500">Ingresos</p>
-            <p className="text-lg font-bold text-green-500">
-              +${summary.income.toFixed(2)}
-            </p>
+        <div className="flex flex-col gap-4 mb-6">
+          <div className="bg-white p-6 rounded-xl shadow-sm">
+            <div className="flex items-center justify-between">
+              <div>
+                <h2 className="text-xl font-semibold text-gray-800">
+                  Balance Total
+                </h2>
+                <p className="text-sm text-gray-500 mt-1">
+                  Balance actual de tu cuenta
+                </p>
+              </div>
+              <p
+                className={`text-2xl font-bold ${
+                  balance >= 0 ? "text-green-500" : "text-red-500"
+                }`}
+              >
+                S/.{balance.toFixed(2)}
+              </p>
+            </div>
           </div>
-          <div className="bg-white p-4 rounded-lg shadow-sm">
-            <p className="text-sm text-gray-500">Gastos</p>
-            <p className="text-lg font-bold text-red-500">
-              -${summary.expenses.toFixed(2)}
-            </p>
-          </div>
-          <div className="bg-white p-4 rounded-lg shadow-sm">
-            <p className="text-sm text-gray-500">Balance</p>
-            <p
-              className={`text-lg font-bold ${
-                balance >= 0 ? "text-green-500" : "text-red-500"
-              }`}
-            >
-              ${balance.toFixed(2)}
-            </p>
+
+          <div className="grid grid-cols-2 gap-4">
+            <div className="bg-gradient-to-br from-green-50 to-white p-6 rounded-xl shadow-sm border border-green-100">
+              <div className="flex flex-col">
+                <div className="flex items-center gap-2 mb-2">
+                  <svg
+                    className="w-5 h-5 text-green-500"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 4v16m8-8H4"
+                    />
+                  </svg>
+                  <h3 className="text-base font-medium text-gray-700">
+                    Ingresos
+                  </h3>
+                </div>
+                <p className="text-xl font-bold text-green-500">
+                  +S/.{summary.income.toFixed(2)}
+                </p>
+              </div>
+            </div>
+
+            <div className="bg-gradient-to-br from-red-50 to-white p-6 rounded-xl shadow-sm border border-red-100">
+              <div className="flex flex-col">
+                <div className="flex items-center gap-2 mb-2">
+                  <svg
+                    className="w-5 h-5 text-red-500"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M20 12H4"
+                    />
+                  </svg>
+                  <h3 className="text-base font-medium text-gray-700">
+                    Gastos
+                  </h3>
+                </div>
+                <p className="text-xl font-bold text-red-500">
+                  -S/.{summary.expenses.toFixed(2)}
+                </p>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -143,7 +194,7 @@ const TransactionHistory = () => {
                         : "text-red-500"
                     }`}
                   >
-                    {transaction.type === "ingreso" ? "+" : "-"}$
+                    {transaction.type === "ingreso" ? "+" : "-"}S/.
                     {transaction.amount.toFixed(2)}
                   </span>
                 </div>
